@@ -1,4 +1,6 @@
+/// <reference types="node" />
 import * as electron from 'electron';
+import { EventEmitter } from 'events';
 interface StrictChannelMap {
     [k: string]: any;
 }
@@ -17,7 +19,7 @@ declare type ListenerRegistrarSignatures<ChannelMap extends StrictChannelMap> = 
 declare type RemoveAllListenersSignatures<ChannelMap extends StrictChannelMap> = IntersectMethodSignatures<{
     [C in keyof ChannelMap]: (channel: C) => void;
 }>;
-declare type StrictIpcModule<ChannelMap extends StrictChannelMap, LooseModule extends electron.EventEmitter> = Omit<LooseModule, 'on' | 'once' | 'removeAllListeners' | 'removeListener'> & {
+declare type StrictIpcModule<ChannelMap extends StrictChannelMap, LooseModule extends EventEmitter> = Omit<LooseModule, 'on' | 'once' | 'removeAllListeners' | 'removeListener'> & {
     on: ListenerRegistrarSignatures<ChannelMap>;
     once: ListenerRegistrarSignatures<ChannelMap>;
     removeAllListeners: RemoveAllListenersSignatures<ChannelMap>;
