@@ -2,7 +2,7 @@
   "name": "typesafe-ipc",
   "author": "Kevin O'Rourke <orourke.kevin@gmail.com>",
   "description": "Typesafe Electron IPC modules",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "types": "dist/index.d.ts",
   "files": [
     "dist/"
@@ -22,10 +22,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/orourkek/typesafe-ipc.git"
+    "url": "https://github.com/vividlearningsystems/typesafe-ipc.git"
   },
   "bugs": {
-    "url": "https://github.com/orourkek/typesafe-ipc/issues"
+    "url": "https://github.com/vividlearningsystems/typesafe-ipc/issues"
   },
   "scripts": {
     "build": "tsc",

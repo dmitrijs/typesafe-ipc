@@ -2,6 +2,8 @@
 
 A type-only library for adding strict type safety to Electron's IPC modules
 
+Note: This version has been updated to support proper return typings for sendSync. Also the events in Renderer and Main now use the correct event types. Now, all typings should be defined as a tuple of `[PayloadType, ReturnType]` ... or anything that doesn't have a return value can be defined as merely `[PayloadType]`.
+
 ## Installation
 
 ```
@@ -20,7 +22,7 @@ Both `ipcMain` and `ipcRenderer` are provided by `electron` as modules that allo
 
 Using `typed-ipc` requires two things:
 
-- An interface that maps ipc channel names to payload types
+- An interface that maps ipc channel names to tuples of payload types and sendSync return values. Where not being used for sendSync, simply define the [payload] in brackets.
 - Using instances of `ipcMain` and `ipcRenderer` that have had `StrictIpcMain` and `StrictIpcRenderer` types asserted on them
 
 The easiest way to accomplish this is to create a file (module) that defines the payload type interface, and also imports `ipcMain` and `ipcRenderer` so they can be re-exported with `StrictIpcMain` and `StrictIpcRenderer` types asserted.
@@ -30,14 +32,15 @@ import * as electron from 'electron';
 import { StrictIpcMain, StrictIpcRenderer } from 'typesafe-ipc';
 
 interface IpcChannelMap {
-  'no-payload': void;
-  'simple-payload': string;
-  'complex-payload': {
+  'no-payload': [void];
+  'simple-payload': [string];
+  'complex-payload': [{
     foo: string;
     bar: {
       baz: number;
     }
-  };
+  }];
+  'sendsync-payload': [string, void];
 }
 
 const ipcRenderer: StrictIpcRenderer<IpcChannelMap> = electron.ipcRenderer;
@@ -56,18 +59,20 @@ It's also possible to use an `enum` for channel names. Usage is exactly the same
 export const enum Channel {
   NoPayload = 'no-payload',
   SimplePayload = 'simple-payload',
-  ComplexPayload = 'complex-payload'
+  ComplexPayload = 'complex-payload',
+  SendSyncPayload = 'sendsync-payload'
 }
 
 interface IpcChannelMap {
-  [Channel.NoPayload]: void;
-  [Channel.SimplePayload]: string;
-  [Channel.ComplexPayload]: {
+  [Channel.NoPayload]: [void];
+  [Channel.SimplePayload]: [string];
+  [Channel.ComplexPayload]: [{
     foo: string;
     bar: {
       baz: number;
     }
-  };
+  }];
+  [Channel.SendSyncPayload]: [string, void];
 }
 ```
 

@@ -9,9 +9,9 @@ app.on('ready', () => {
 });
 
 /**
- * Paramaters in the callback below are automatically typed!
+ * Parameters in the callback below are automatically typed!
  */
 ipcMain.on('button-click', (event, payload) => {
-  // tslint:disable-next-line:no-console
   console.log(`received "button-click" via ipc (${payload.count})`);
+  event.returnValue = 'button-click acknowledged!';
 });

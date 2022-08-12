@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
      * The `send` call below will throw type errors if the passed payload
      * doesn't match the expected type.
      */
-    ipcRenderer.send('button-click', { count });
+    const result = ipcRenderer.sendSync('button-click', { count });
+    console.log('Message from main process:', result);
   });
 
 });
