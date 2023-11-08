@@ -40,6 +40,6 @@
     "typescript": "^4"
   },
   "peerDependencies": {
-    "electron": "7.x - 10.x"
+    "electron": "7.x - 999.x"
   }
 }
