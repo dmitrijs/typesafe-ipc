@@ -33,11 +33,11 @@
     "prepublishOnly": "npm run lint && npm run build"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.16.0",
-    "@typescript-eslint/parser": "^5.16.0",
-    "electron": "7.x - 10.x",
-    "eslint": "^8.11.0",
-    "typescript": "^4"
+    "@typescript-eslint/eslint-plugin": "*",
+    "@typescript-eslint/parser": "*",
+    "electron": "*",
+    "eslint": "*",
+    "typescript": "*"
   },
   "peerDependencies": {
     "electron": "7.x - 999.x"
