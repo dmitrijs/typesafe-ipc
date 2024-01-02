@@ -148,7 +148,6 @@ export type StrictIpcRenderer<ChannelMap extends StrictChannelMap> = Omit<
 
   send: SendMethodSignatures<ChannelMap>;
   sendSync: SendSyncMethodSignatures<ChannelMap>;
-  sendTo: SendToMethodSignatures<ChannelMap>;
   sendToHost: SendMethodSignatures<ChannelMap>;
 };
 
