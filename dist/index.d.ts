@@ -40,7 +40,6 @@ export declare type StrictIpcRenderer<ChannelMap extends StrictChannelMap> = Omi
     removeListener: ListenerRegistrarSignaturesRenderer<ChannelMap>;
     send: SendMethodSignatures<ChannelMap>;
     sendSync: SendSyncMethodSignatures<ChannelMap>;
-    sendTo: SendToMethodSignatures<ChannelMap>;
     sendToHost: SendMethodSignatures<ChannelMap>;
 };
 export declare type StrictIpcMain<ChannelMap extends StrictChannelMap> = StrictIpcModule<ChannelMap, electron.IpcMain>;
