@@ -26,7 +26,7 @@ declare type ListenerRegistrarSignaturesRenderer<ChannelMap extends StrictChanne
     [C in keyof ChannelMap]: (channel: C, listener: Payload<ChannelMap, C> extends void ? (event: electron.IpcRendererEvent) => void : (event: electron.IpcRendererEvent, payload: Payload<ChannelMap, C>) => void) => void;
 }>;
 declare type RemoveAllListenersSignatures<ChannelMap extends StrictChannelMap> = IntersectMethodSignatures<{
-    [C in keyof ChannelMap]: (channel: C) => void;
+    [C in keyof ChannelMap]: (channel?: C) => void;
 }>;
 declare type StrictIpcModule<ChannelMap extends StrictChannelMap, LooseModule extends NodeJS.EventEmitter> = Omit<LooseModule, 'on' | 'once' | 'removeAllListeners' | 'removeListener'> & {
     on: ListenerRegistrarSignaturesMain<ChannelMap>;
