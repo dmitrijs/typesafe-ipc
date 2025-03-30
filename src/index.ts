@@ -109,7 +109,7 @@ type ListenerRegistrarSignaturesRenderer<
 type RemoveAllListenersSignatures<
   ChannelMap extends StrictChannelMap
   > = IntersectMethodSignatures<{
-    [C in keyof ChannelMap]: (channel: C) => void
+    [C in keyof ChannelMap]: (channel?: C) => void
   }>;
 
 /**
